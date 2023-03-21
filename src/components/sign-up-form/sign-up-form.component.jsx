@@ -8,7 +8,7 @@ import {
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
-import { SignupContainer } from './sign-up-form.styles';
+import { SignUpContainer } from './sign-up-form.styles';
 
 const defaultFormFields = {
   displayName: '',
@@ -18,7 +18,6 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -39,6 +38,7 @@ const SignUpForm = () => {
         email,
         password
       );
+
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
@@ -57,7 +57,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <SignupContainer>
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -98,7 +98,7 @@ const SignUpForm = () => {
         />
         <Button type='submit'>Sign Up</Button>
       </form>
-    </SignupContainer>
+    </SignUpContainer>
   );
 };
 
